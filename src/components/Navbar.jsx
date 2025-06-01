@@ -55,7 +55,7 @@ const Navbar = () => {
           {/* <div className="hidden lg:flex items-center space-x-6 absolute top-0 right-0 bg-natura-green text-white px-6 py-1 rounded-bl-lg">
             <a href="tel:+919876543210" className="flex items-center space-x-2 text-sm">
               <FaPhone className="text-xs" />
-              <span>+91 98765 43210</span>
+              <span>+91 92846 28559</span>
             </a>
             <a href="mailto:info@naturadairy.com" className="flex items-center space-x-2 text-sm">
               <FaEnvelope className="text-xs" />
@@ -127,7 +127,7 @@ const Navbar = () => {
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <a href="tel:+919876543210" className="flex items-center space-x-2 text-gray-600 mb-3">
                   <FaPhone className="text-natura-green" />
-                  <span>+91 98765 43210</span>
+                  <span>+91 92846 28559</span>
                 </a>
                 <a href="mailto:info@naturadairy.com" className="flex items-center space-x-2 text-gray-600">
                   <FaEnvelope className="text-natura-green" />
