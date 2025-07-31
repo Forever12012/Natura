@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import milk from '../images/milk.jpg'
 import yogurt from '../images/yogurt.jpg'
+import { Link } from 'react-router-dom'
 
 
 const Products = () => {
@@ -79,12 +80,12 @@ const Products = () => {
                     </span>
                   ))}
                 </div>
-                <a 
-                  href="#contact" 
+                <Link 
+                  to="/contact" 
                   className="btn btn-primary w-full text-center"
                 >
                   Inquire Now
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -100,9 +101,9 @@ const Products = () => {
           <p className="mb-6 max-w-2xl mx-auto">
             We offer competitive rates for restaurants, cafes, bakeries, and retail stores. Contact us to discuss how our premium dairy products can enhance your offerings.
           </p>
-          <a href="#contact" className="btn btn-primary">
+          <Link to="/contact" className="btn btn-primary">
             Contact for Wholesale
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

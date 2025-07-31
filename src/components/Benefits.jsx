@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FaRegCheckCircle } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Benefits = () => {
   const [ref, inView] = useInView({
@@ -103,9 +104,9 @@ const Benefits = () => {
               </div>
               
               <div className="mt-8">
-                <a href="#products" className="btn btn-primary">
+                <Link to={"/products"} className="btn btn-primary">
                   Explore Our Products
-                </a>
+                </Link>
               </div>
             </div>
             

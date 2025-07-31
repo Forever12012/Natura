@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FaQuoteLeft, FaStar } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Testimonials = () => {
   const [ref, inView] = useInView({
@@ -122,9 +123,9 @@ const Testimonials = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <h3 className="text-2xl font-bold mb-6">Ready to Try Natura's Quality?</h3>
-          <a href="#contact" className="btn btn-primary">
+          <Link to={"/contact"} className="btn btn-primary">
             Get in Touch Today
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>

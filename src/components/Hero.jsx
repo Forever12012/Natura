@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import Products from '../pages/Products'
+
 
 const Hero = () => {
   return (
@@ -25,14 +28,13 @@ const Hero = () => {
             At Natura, we bring you the finest milk and dairy products from our happy Holstein Friesian cows raised in the serene landscapes of Gondia, Maharashtra.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <motion.a 
-              href="#products"
+            <Link to={"/products"}
               className="btn bg-natura-green text-white hover:bg-natura-green/90"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Our Products
-            </motion.a>
+            </Link>
             <motion.a 
               href="#cow-care"
               className="btn bg-white text-natura-green hover:bg-white/90"
