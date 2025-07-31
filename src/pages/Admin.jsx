@@ -320,7 +320,7 @@ const Admin = () => {
       <div className="lg:ml-64">
         {/* Top header */}
         <header className="bg-white shadow-sm border-b border-gray-200">
-          <div className="flex items-center justify-between h-16 px-6 mt-[-420px]">
+          <div className="flex items-center justify-between h-16 px-6 lg:mt-[-420px]">
             <div className="flex items-center">
               <button 
                 className="lg:hidden text-gray-500 hover:text-gray-700 mr-4"
