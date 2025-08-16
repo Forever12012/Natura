@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios';
 import { motion } from 'framer-motion'
 import { 
   FaHome, 
@@ -47,6 +48,29 @@ const Admin = () => {
     { id: 3, name: 'Farm Butter', category: 'Dairy', price: 120, stock: 45, status: 'Active' },
     { id: 4, name: 'Artisan Cheese', category: 'Cheese', price: 200, stock: 25, status: 'Active' }
   ])
+
+  const [messages, setMessages] = useState([]);
+const [loadingMessages, setLoadingMessages] = useState(false);
+const [messageError, setMessageError] = useState('');
+
+useEffect(() => {
+  if (activeSection === "messages") {
+    setLoadingMessages(true);
+    setMessageError('');
+    axios.get('http://localhost:5000/api/contact') // Correct endpoint for fetching contact messages
+      .then(res => {
+        setMessages(res.data)
+        console.log(res.data)
+      })
+      .catch(err => {
+        setMessageError(err.response?.data?.message || err.message);
+      })
+      .finally(() => setLoadingMessages(false));
+  }
+}, [activeSection]);
+
+
+
 
   const sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', icon: <FaHome /> },
@@ -263,7 +287,46 @@ const Admin = () => {
       case 'gallery':
         return <div className="bg-white p-8 rounded-lg shadow-md"><h2 className="text-2xl font-bold">Gallery Management</h2><p className="mt-4 text-gray-600">Gallery management functionality will be implemented here.</p></div>
       case 'messages':
-        return <div className="bg-white p-8 rounded-lg shadow-md"><h2 className="text-2xl font-bold">Messages</h2><p className="mt-4 text-gray-600">Message management functionality will be implemented here.</p></div>
+  return (
+    <div className="bg-white p-8 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4">Messages</h2>
+      {loadingMessages ? (
+        <p className="text-gray-600">Loading...</p>
+      ) : messageError ? (
+        <p className="text-red-600">{messageError}</p>
+      ) : messages.length === 0 ? (
+        <p className="text-gray-500">No messages found.</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact Number</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Interest</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {messages.map((msg) => (
+                <tr key={msg.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4">{msg.name}</td>
+                  <td className="px-6 py-4">{msg.email}</td>
+                  <td className="px-6 py-4">{msg.phone}</td>
+                  <td className="px-6 py-4">{msg.message}</td>
+                  <td className="px-6 py-4">{msg.interest}</td>
+                  <td className="px-6 py-4">{msg.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+
       case 'analytics':
         return <div className="bg-white p-8 rounded-lg shadow-md"><h2 className="text-2xl font-bold">Analytics</h2><p className="mt-4 text-gray-600">Analytics and reporting functionality will be implemented here.</p></div>
       case 'settings':
