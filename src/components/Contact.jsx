@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa'
+import axios from "axios";
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -24,24 +25,29 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
   
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // In a real application, this would send the form data to a server
-    // For now, we'll simulate a successful form submission
-    setFormStatus('success')
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormStatus(null)
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-        interest: 'general'
-      })
-    }, 3000)
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.post("http://localhost:5000/api/contact", formData);
+
+    if (response.status === 201) {
+      setFormStatus("success");
+      setTimeout(() => {
+        setFormStatus(null);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          interest: "general",
+        });
+      }, 3000);
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error.response?.data || error.message);
+    setFormStatus("error");
   }
+};
   
   const contactInfo = [
     {
