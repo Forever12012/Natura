@@ -1,24 +1,23 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import About from './pages/About'
-import Products from './pages/Products'
-import Gallery from './pages/Gallery'
-import Contact from './pages/Contact'
-import Admin from './pages/Admin'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Products from "./pages/Products";
+import Gallery from "./pages/Gallery";
+import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
+import ProtectedRoute from "./components/ProtectedRoute";
+import "./App.css";
 
-// Scroll to top component
 function ScrollToTop() {
-  const { pathname } = useLocation()
-
+  const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-
-  return null
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
 }
 
 function App() {
@@ -34,13 +33,25 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<Admin />} />
+
+            {/* 🔹 Admin Login Page */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+
+            {/* 🔹 Protected Admin Panel */}
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </main>
         <Footer />
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
