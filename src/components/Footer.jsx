@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -27,22 +28,22 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-gray-400 hover:text-white transition-colors">Home</a>
+                <Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
               </li>
               <li>
-                <a href="#about" className="text-gray-400 hover:text-white transition-colors">About Us</a>
+                <Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link>
               </li>
               <li>
-                <a href="#cow-care" className="text-gray-400 hover:text-white transition-colors">Our Approach</a>
+                <Link to="/" className="text-gray-400 hover:text-white transition-colors">Our Approach</Link>
               </li>
               <li>
-                <a href="#products" className="text-gray-400 hover:text-white transition-colors">Products</a>
+                <Link to="/products" className="text-gray-400 hover:text-white transition-colors">Products</Link>
               </li>
               <li>
-                <a href="#gallery" className="text-gray-400 hover:text-white transition-colors">Gallery</a>
+                <Link to="/gallery" className="text-gray-400 hover:text-white transition-colors">Gallery</Link>
               </li>
               <li>
-                <a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a>
+                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link>
               </li>
             </ul>
           </div>
